@@ -18,6 +18,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 type Props = {};
 const formSchema = z.object({
@@ -33,6 +34,7 @@ function PostForm({}: Props) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
+  const router = useRouter();
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -40,6 +42,7 @@ function PostForm({}: Props) {
       await createPost(values.title, values.description);
       toast.success('Added data Successfully');
       form.reset();
+      router.refresh();
     } catch (error) {
       console.error('Error connecting to MongoDB:', error);
       toast.error('Error connecting to MongoDB');
