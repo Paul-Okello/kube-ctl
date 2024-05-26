@@ -43,6 +43,7 @@ function Posts({}: Props) {
           </li>
         ))}
       </ul>
+      {myPosts.length === 0 && <p className='text-center'>No data found</p>}
     </ScrollArea>
   );
 }

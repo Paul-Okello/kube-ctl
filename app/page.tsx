@@ -20,7 +20,7 @@ async function HomePage({}: Props) {
   console.log('posts', posts);
 
   return (
-    <main className='container'>
+    <main className='container h-full'>
       <h1 className='text-center text-3xl'>Docker + Kubernates + MongoDb</h1>
       <div className='grid grid-cols-1 md:grid-cols-2'>
         <Posts />
