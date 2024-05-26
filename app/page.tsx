@@ -17,6 +17,7 @@ type DbPost = {
 async function HomePage({}: Props) {
   const posts = (await getPosts()) as DbPost[];
   console.log('posts', posts);
+
   return (
     <main className='container'>
       <h1 className='text-center text-3xl'>Docker + Kubernates + MongoDb</h1>

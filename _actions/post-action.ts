@@ -2,12 +2,13 @@
 
 import connectDB from '@/database/client';
 import PostModel, { IPost } from '@/database/postModel';
-import { title } from 'process';
 
 export async function getPosts() {
+  await connectDB();
   try {
-    await connectDB();
-    const data = await PostModel.find();
+    const data = await PostModel.find().sort({
+      updatedAt: -1,
+    });
     return data;
   } catch (error) {
     console.log(error);
